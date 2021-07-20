@@ -1,0 +1,361 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    font-family: "Open Sans", sans-serif;
+  }
+html {
+ 
+    height: 100%;
+}  
+body{
+    background-color: #141414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    
+}
+
+main {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.logo {
+    
+    align-content: center;
+    
+    width: 453px;
+    height: 660px;
+    border-radius: 0px 10px 10px 0px;
+}
+.login-container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    width: 630px;
+    height: 660px;
+    left: 180px;
+    top: 180px;
+    
+    background: #303030;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 10px 0px 0px 10px;
+}
+
+.title{
+    height: 61px;
+
+    margin-top: 34px;
+
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 61px;
+    letter-spacing: 2.8px;
+
+    color: #FFFFFF;
+}
+
+span {
+    font-weight: 800;
+  
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.login-icon {
+    width: 52px;
+    height: 52px;
+    padding: 16px;
+    border: 1px solid #8F8F8F;
+    
+    border-radius: 8px 0px 0px 8px;
+}
+
+
+    .uname,
+    .psw {
+    width: 278px;
+    height: 52px;
+    border: 1px solid #8F8F8F;
+    
+    border-radius: 0px 8px 8px 0px;
+    background: #303030;
+
+    padding-left: 20px;
+}
+
+.user-input, .password-input {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 32px;
+    
+}
+
+.icon-color {
+    fill: #D1D1D1;
+}
+
+.eye {
+    position: absolute;
+    width: 20px;
+    height: 14px;
+    margin-right: 13px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url(./img/showpassword.svg);
+}
+
+.grid-container {
+    position: relative;
+    width: 330px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: transparent;
+
+}
+
+.rememberm {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    justify-self: start;
+    align-self: center;
+    color: #929699;
+}
+.cb {
+    background: #7CD235;
+    border-radius: 4px;
+}
+
+.login-button {
+    width: 100px;
+    height: 40px;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    border: none;
+    /* identical to box height */
+
+    text-align: center;
+    
+    justify-self: end;
+    color: #FFFFFF;
+}
+
+
+.register {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+    margin-top: 15px;
+    justify-self: start;
+    align-self: center;
+}
+
+.forgot-psw {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    margin-top: 15px;
+    text-align: right;
+
+    color: #FFFFFF;
+}
+
+
+.divider {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+    width: 100%;
+    margin-top: 47px ;
+}
+
+.divider:after {
+    content: "";
+    border-top: 1px solid #FFFFFF;
+    width: 134px;
+    margin-top: 10px; 
+    margin-left: 15px;  
+}
+.divider:before {
+    content: "";
+    border-top: 1px solid #FFFFFF;
+    width: 134px;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.sm-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 168px;
+    margin-top: 26px;
+}
+
+.facebook {
+    display: flex;
+    width: 240px;
+    height: 40px;
+
+}
+ .fb-icon {
+    width: 46.55px;
+    height: 40px;
+    padding-top: 11px;
+    padding-left: 13.27px;
+    background: #263C68;
+    border-radius: 8px 0px 0px 8px; 
+ }
+
+ .fb-link {
+    width: 195.45px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    background: #3B5998;
+    border-radius: 0px 8px 8px 0px;
+ }
+
+ .twitter {
+    display: flex;
+    width: 240px;
+    height: 40px;
+    margin-top: 24px;
+ }
+
+ .tw-icon {
+    width: 46.55px;
+    padding-top: 12px;
+    padding-left: 14.73px;
+    background: #0695CB;
+    border-radius: 8px 0px 0px 8px;
+ }
+
+ .tw-link {
+    width: 195.45px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    background: #00ACED;
+    border-radius: 0px 8px 8px 0px;
+ }
+
+ .google {
+    display: flex;
+    width: 240px;
+    height: 40px;
+    margin-top: 24px;
+   
+ }
+
+ .g-icon {
+    width: 46.55px;
+    padding-top: 12px;
+    padding-left: 15.55px;
+    background: #9D9D9D;
+    border-radius: 8px 0px 0px 8px;
+ }
+
+ .g-link {
+    width: 195.45px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    background: #C7C7C7;
+    border-radius: 0px 8px 8px 0px;
+ }
+
+ @media screen and (max-width: 1023px )
+ and (min-width: 768px) {
+    body {
+        background-color: #303030;
+        align-items: flex-start;
+     }
+
+     .logo {
+         display: none;
+     }
+
+     .login-container {
+        box-shadow: none;
+    }
+
+    .title {
+        font-weight: 300;
+        margin-top: 105px;
+     }
+ }
+
+ @media screen and (max-width: 767px) {
+    body {
+        background-color: #303030;
+
+        align-items: flex-start;
+    }
+     
+     .logo {
+         display: none;
+     }
+
+     .login-container {
+
+        box-shadow: none;
+    
+     }
+
+     .title {
+        font-weight: normal;
+        font-size: 35px;
+        line-height: 48px;
+        margin-top: 45px;
+     }
+     .grid-container {
+         
+     }
+     
+ }
