@@ -117,10 +117,10 @@ span {
 
 .grid-container {
     position: relative;
-    width: 330px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        background-color: transparent;
+    grid-column-gap: 99.03px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: transparent;
 
 }
 
@@ -134,6 +134,9 @@ span {
     color: #929699;
 }
 .cb {
+    appearance: none;
+    border: 1px solid #8F8F8F;
+    border-radius: 4px;
     background: #7CD235;
     border-radius: 4px;
 }
@@ -194,7 +197,7 @@ span {
     line-height: 19px;
     color: #FFFFFF;
     width: 100%;
-    margin-top: 47px ;
+    margin-top: 31px ;
 }
 
 .divider:after {
@@ -345,7 +348,11 @@ span {
      .login-container {
 
         box-shadow: none;
-    
+     }
+
+     .uname,
+     .psw {
+     width: 188px;
      }
 
      .title {
@@ -355,7 +362,18 @@ span {
         margin-top: 45px;
      }
      .grid-container {
-         
+        grid-column-gap: 9.03px;
      }
+
+     .divider:after {
+        width: 89px;
+        margin-top: 10px; 
+        margin-left: 18px;  
+    }
+    .divider:before {
+        width: 89px;
+        margin-top: 10px;
+        margin-right: 18px;
+    }
      
  }
