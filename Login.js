@@ -1,5 +1,8 @@
-let password = document.querySelector(".psw");
+let userName = document.querySelector(".uname");
+let password = document.querySelector(".password-input");
 let eye = document.querySelector(".eye");
+
+
 
 
 const showPassword = function() {
@@ -9,13 +12,17 @@ const showPassword = function() {
         password.type = "password";
     }
 }
+const element = document.querySelector('.login');
+element.addEventListener('submit', event => {
+  event.preventDefault();
+});
 
 eye.addEventListener("click", showPassword);
 
-let userName = document.querySelector(".uname");
+
 
  const loginVal = function () {
-    let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    let filter =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if ((userName == "") || (userName.type === "email")) {
         alert("please enter user a valid email");
@@ -28,3 +35,15 @@ let userName = document.querySelector(".uname");
 
  const login = document.querySelector(".login-button")
  login.addEventListener("click", loginVal);
+ 
+//const targetPassword = document.querySelector('input[type="password"]');//
+
+/*password.addEventListener("focus", () => {
+    document.getElementsByClassName('icon-color')[2].classList.add("focused");
+});
+password.addEventListener("active", () => {
+    document.getElementsByClassName('icon-color')[2].classList.add("focused");
+});*/
+
+
+
