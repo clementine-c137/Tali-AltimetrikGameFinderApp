@@ -1,5 +1,13 @@
-ul {
-    display: grid;
-    grid-template-columns: repeat(3,min-content);
-    
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    font-family: "Open Sans", sans-serif;
+}
+
+header {
+    height: 120px;
+    width: 100%;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
 }
