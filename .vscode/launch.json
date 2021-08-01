@@ -8,7 +8,11 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
+<<<<<<< Updated upstream
             "file": "C:/Users/soy_t/Desktop/Tali-AltimetrikGameFinderApp/main.html",
+=======
+            "url": "http://localhost:8080",
+>>>>>>> Stashed changes
             "webRoot": "${workspaceFolder}"
         }
     ]
