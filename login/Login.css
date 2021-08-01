@@ -13,7 +13,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    min-height: 100%;
     
 }
 
@@ -80,7 +80,7 @@ main {
     border-left: 1px solid #8F8F8F;
     padding-left: 20px;
     color: #8F8F8F;
-
+    outline: 0;
 }
 
 
@@ -145,7 +145,6 @@ main {
 
 .error-message-email, .error-message-psw {
     display: none;
-    
     align-items: center;
     font-style: normal;
     font-weight: normal;
@@ -180,13 +179,6 @@ main {
 label {
     margin-left: 10px;
 }
-.cb {
-    appearance: none;
-    border: 1px solid #8F8F8F;
-    border-radius: 4px;
-    background: #7CD235;
-    border-radius: 4px;
-}
 
 .checkbox {
     appearance: none;
@@ -198,8 +190,11 @@ label {
     border-radius: 4px;
 }
 
-input[type=checkbox]:active {
+input[type=checkbox]:checked {
     background: #7CD235;
+    background-image: url(./img/checkmark.svg);
+    background-position: center; 
+    background-repeat: no-repeat;
 }
 input[type="checkbox"]:focus {
     border-color: #FFFFFF;
@@ -312,7 +307,7 @@ input[type="checkbox"]:focus {
     line-height: 40px;
     text-align: center;
     text-transform: uppercase;
-
+    border: none;
     color: #FFFFFF;
     background: #3B5998;
     border-radius: 0px 8px 8px 0px;
@@ -341,7 +336,7 @@ input[type="checkbox"]:focus {
     line-height: 40px;
     text-align: center;
     text-transform: uppercase;
-
+    border: none;
     color: #FFFFFF;
     background: #00ACED;
     border-radius: 0px 8px 8px 0px;
@@ -371,7 +366,7 @@ input[type="checkbox"]:focus {
     line-height: 40px;
     text-align: center;
     text-transform: uppercase;
-
+    border: none;
     color: #FFFFFF;
     background: #C7C7C7;
     border-radius: 0px 8px 8px 0px;
