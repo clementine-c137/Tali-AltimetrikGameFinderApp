@@ -35,7 +35,45 @@ eye.addEventListener("click", showPassword);
 
  const login = document.querySelector(".login-button")
  login.addEventListener("click", loginVal);
- 
+
+// focus + active for email input //
+ userName.addEventListener('mousedown', () => {
+    document.getElementsByClassName('icon-color')[0].classList.add('activated');
+    document.getElementsByClassName('icon-color')[1].classList.add('activated');
+});
+userName.addEventListener('mouseup', () => {
+    document.getElementsByClassName('icon-color')[0].classList.remove('activated');
+    document.getElementsByClassName('icon-color')[1].classList.remove('activated');
+});
+
+userName.addEventListener('focus', () => {
+    document.getElementsByClassName('user-container')[0].classList.add('input-focus');
+});
+userName.addEventListener('blur', () => {
+    document.getElementsByClassName('user-container')[0].classList.remove('input-focus');
+});
+
+
+
+//focus + active for password input//
+ password.addEventListener('mousedown', () => {
+    document.getElementsByClassName('icon-color')[2].classList.add('activated');
+});
+password.addEventListener('mouseup', () => {
+    document.getElementsByClassName('icon-color')[2].classList.remove('activated');
+});
+
+password.addEventListener('focus', () => {
+    document.getElementsByClassName('password-container')[0].classList.add('input-focus');
+});
+password.addEventListener('blur', () => {
+    document.getElementsByClassName('password-container')[0].classList.remove('input-focus');
+    
+});
+
+
+
+
 //const targetPassword = document.querySelector('input[type="password"]');//
 
 /*password.addEventListener("focus", () => {
@@ -43,7 +81,11 @@ eye.addEventListener("click", showPassword);
 });
 password.addEventListener("active", () => {
     document.getElementsByClassName('icon-color')[2].classList.add("focused");
-});*/
+});
+
+password.addEventListener("focus", () => {
+    document.getElementsByName('password-input')[0].classList.add("input-active");
+})*/
 
 
 

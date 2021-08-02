@@ -53,6 +53,9 @@ main {
     color: #FFFFFF;
 }
 
+.f {
+    font-weight: 800; 
+}
 
 .login {
     display: flex;
@@ -122,6 +125,7 @@ main {
     border-bottom: transparent;
     border-right: transparent;
     border-left: 1px solid #FFFFFF;
+    color: #FFFFFF;
 }
 .icon-color {
     fill: #D1D1D1;
@@ -130,6 +134,13 @@ main {
 
 .focused {
     fill: #FFFFFF;
+}
+
+.activated {
+    fill: #FFFFFF;
+}
+.input-focus {
+    border: 1px solid #FFFFFF;
 }
 
 .eye {
@@ -264,14 +275,14 @@ input[type="checkbox"]:focus {
     border-top: 1px solid #FFFFFF;
     width: 134px;
     margin-top: 10px; 
-    margin-left: 15px;  
+    margin-left: 25px;  
 }
 .divider:before {
     content: "";
     border-top: 1px solid #FFFFFF;
     width: 134px;
     margin-top: 10px;
-    margin-right: 15px;
+    margin-right: 25px;
 }
 
 .sm-login {

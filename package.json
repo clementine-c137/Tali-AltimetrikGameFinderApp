@@ -1,0 +1,23 @@
+{
+  "name": "gamefinderapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clementine-c137/Tali-AltimetrikGameFinderApp.git"
+  },
+  "author": "Tali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clementine-c137/Tali-AltimetrikGameFinderApp/issues"
+  },
+  "homepage": "https://github.com/clementine-c137/Tali-AltimetrikGameFinderApp#readme",
+  "devDependencies": {
+    "json-server": "^0.16.3",
+    "json-server-auth": "^2.1.0"
+  }
+}
