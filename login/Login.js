@@ -56,19 +56,17 @@ userName.addEventListener('blur', () => {
 
 
 //focus + active for password input//
- password.addEventListener('mousedown', () => {
+ password.addEventListener('keydown', () => {
     document.getElementsByClassName('icon-color')[2].classList.add('activated');
 });
-password.addEventListener('mouseup', () => {
-    document.getElementsByClassName('icon-color')[2].classList.remove('activated');
-});
+
 
 password.addEventListener('focus', () => {
     document.getElementsByClassName('password-container')[0].classList.add('input-focus');
 });
 password.addEventListener('blur', () => {
     document.getElementsByClassName('password-container')[0].classList.remove('input-focus');
-    
+    document.getElementsByClassName('icon-color')[2].classList.remove('activated');   
 });
 
 
