@@ -115,3 +115,18 @@ header {
     margin-right: 40px;
     background: #FFFFFF;
 }
+
+.side-menu {
+    height: 100%;
+    width: 263px;
+}
+
+.home {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    color: #7CD235;
+    background-color: transparent;
+    outline: 0;
+}
