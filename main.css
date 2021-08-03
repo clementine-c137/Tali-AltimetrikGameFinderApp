@@ -128,5 +128,6 @@ header {
     line-height: 30px;
     color: #7CD235;
     background-color: transparent;
+    border: none;
     outline: 0;
 }
