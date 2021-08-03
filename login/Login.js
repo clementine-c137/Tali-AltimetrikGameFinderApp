@@ -12,13 +12,12 @@ const showPassword = function() {
         password.type = "password";
     }
 }
+eye.addEventListener("click", showPassword);
+
 const element = document.querySelector('.login');
 element.addEventListener('submit', event => {
   event.preventDefault();
 });
-
-eye.addEventListener("click", showPassword);
-
 
 
  const loginVal = function () {
@@ -37,26 +36,32 @@ eye.addEventListener("click", showPassword);
  login.addEventListener("click", loginVal);
 
 // focus + active for email input //
- userName.addEventListener('mousedown', () => {
+ userName.addEventListener('keydown', () => {
     document.getElementsByClassName('icon-color')[0].classList.add('activated');
     document.getElementsByClassName('icon-color')[1].classList.add('activated');
 });
-userName.addEventListener('mouseup', () => {
-    document.getElementsByClassName('icon-color')[0].classList.remove('activated');
-    document.getElementsByClassName('icon-color')[1].classList.remove('activated');
+userName.addEventListener('mousedown', () => {
+    document.getElementsByClassName('icon-color')[0].classList.add('activated');
+    document.getElementsByClassName('icon-color')[1].classList.add('activated');
 });
+
 
 userName.addEventListener('focus', () => {
     document.getElementsByClassName('user-container')[0].classList.add('input-focus');
 });
 userName.addEventListener('blur', () => {
     document.getElementsByClassName('user-container')[0].classList.remove('input-focus');
+    document.getElementsByClassName('icon-color')[0].classList.remove('activated');
+    document.getElementsByClassName('icon-color')[1].classList.remove('activated');
 });
 
 
 
 //focus + active for password input//
  password.addEventListener('keydown', () => {
+    document.getElementsByClassName('icon-color')[2].classList.add('activated');
+});
+password.addEventListener('mousedown', () => {
     document.getElementsByClassName('icon-color')[2].classList.add('activated');
 });
 
@@ -86,4 +91,18 @@ password.addEventListener("focus", () => {
 })*/
 
 
-
+fetch('http://localhost:3000/login', {
+  method: 'POST', 
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ "email": userName.value,
+    "password": password.value}),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
