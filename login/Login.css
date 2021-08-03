@@ -118,6 +118,7 @@ main {
     border-bottom: transparent;
     border-right: transparent;
     border-left: 1px solid #FFFFFF;
+    color: #FFFFFF;
 }
 .password-input:active,
 .uname:active {
@@ -299,7 +300,7 @@ input[type="checkbox"]:focus {
     display: flex;
     width: 240px;
     height: 40px;
-
+    cursor: pointer;
 }
  .fb-icon {
     width: 46.55px;
@@ -329,6 +330,7 @@ input[type="checkbox"]:focus {
     width: 240px;
     height: 40px;
     margin-top: 24px;
+    cursor: pointer;
  }
 
  .tw-icon {
@@ -358,7 +360,7 @@ input[type="checkbox"]:focus {
     width: 240px;
     height: 40px;
     margin-top: 24px;
-   
+    cursor: pointer;
  }
 
  .g-icon {
