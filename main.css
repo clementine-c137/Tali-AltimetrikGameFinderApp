@@ -117,11 +117,15 @@ header {
 }
 
 .side-menu {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 263px;
 }
 
 .home {
+    margin-top:33px;
+    margin-left: 39px;
     font-style: normal;
     font-weight: 800;
     font-size: 22px;
@@ -129,5 +133,62 @@ header {
     color: #7CD235;
     background-color: transparent;
     border: none;
-    outline: 0;
+}
+
+.reviews {
+    margin-left: 39px;
+    margin-top: 11px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FFFFFF; 
+    background-color: transparent;
+    border: none;
+}
+
+.new-releases {
+    margin-left: 39px;
+    margin-bottom: 33px;
+    margin-top: 11px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FFFFFF; 
+    background-color: transparent;
+    border: none;
+}
+
+.popular {
+    margin-left: 39px;
+    margin-bottom: 33px;
+    margin-top: 33px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FFFFFF; 
+    background-color: transparent;
+    border: none;
+}
+
+.sub-menu {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-bottom: 11px;
+}
+
+
+.this-week, .this-month, .coming-soon,
+.last-searches, .best {
+    margin-left: 13px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
 }
