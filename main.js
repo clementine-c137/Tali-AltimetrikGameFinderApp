@@ -1,0 +1,1 @@
+const urlKey = 'https://api.rawg.io/api/platforms?c171203ffd95417e994a2949e49ca0f8'
