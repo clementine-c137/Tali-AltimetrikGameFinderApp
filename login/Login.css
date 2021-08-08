@@ -58,6 +58,7 @@ main {
 }
 
 .login {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,6 +92,7 @@ main {
 
 .user-container, .password-container {
     display: flex;
+    position: relative;
     height: 52px;
     justify-content: flex-end;
     align-items: center;
@@ -103,7 +105,7 @@ main {
 .user-container:active,
 .password-container:active {
         border: 1px solid #FFFFFF;
-        color: #FFFFFF;
+        color: #FFFFFF ;
     }
 
 .user-container:focus,
@@ -155,17 +157,37 @@ main {
     background-image: url(./img/showpassword.svg);
 }
 
-.error-message-email, .error-message-psw {
-    display: none;
+.error-message-email {
+    position: absolute;
+    padding-top: 30px;
+    left: 0;
     align-items: center;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
     color: #E07979;
 }
 
+.error-message-psw {
+    position: absolute;
+    padding-top: 200px;
+    left: 0;
+    align-items: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #E07979;
+}
+
+.error-icon {
+    fill: #E07979;
+}
+
+.error-input {
+    border: 1px solid #E07979;
+}
 .grid-container {
     position: relative;
     grid-column-gap: 77px;
@@ -222,10 +244,7 @@ input[type="checkbox"]:focus {
     font-size: 16px;
     line-height: 22px;
     border: none;
-    /* identical to box height */
-
     text-align: center;
-    
     justify-self: end;
     color: #FFFFFF;
 }
@@ -236,8 +255,6 @@ input[type="checkbox"]:focus {
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
-
     color: #FFFFFF;
     margin-top: 15px;
     justify-self: start;
@@ -249,7 +266,6 @@ input[type="checkbox"]:focus {
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
     margin-top: 15px;
     text-align: right;
 

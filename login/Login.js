@@ -2,7 +2,8 @@ let userName = document.querySelector(".uname");
 let password = document.querySelector(".password-input");
 let eye = document.querySelector(".eye");
 let loginButton = document.querySelector(".login-button");
-
+let emailError = document.querySelector('.error-message-email');
+let passwordError = document.querySelector('.error-message-psw');
 
 
 const showPassword = function() {
@@ -19,22 +20,49 @@ element.addEventListener('submit', event => {
   event.preventDefault();
 });
 
+ //check email input//
+function emailVal(userName) {
+    let filter = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let result = filter.test(userName.value) && (userName.value.length < 255);
 
- const loginVal = function () {
-    let filter =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    if (userName == "") //|| (userName.type === "email"))// 
-    {
-        alert("please enter user a valid email");
-    } else if ((password == "") || (password.length < 3)) {
-        alert ("Please enter a valid password, min 3 characters");
+    if (!result) {
+        emailError.textContent += "Enter a valid email";
+        console.log(emailError)
+       //document.querySelector('.user-container').insertAdjacentHTML('afterend', 'enter a valid');
+      
+        document.getElementsByClassName('user-container')[0].classList.add('error-input');
+        document.getElementsByClassName('icon-color')[0].classList.add('error-icon');
+        document.getElementsByClassName('icon-color')[1].classList.add('error-icon');
+        userName.style.color = '#E07979';
     } else {
-
+        emailError.innerHTML = ""
+        document.getElementsByClassName('user-container')[0].classList.remove('error-input');
+        document.getElementsByClassName('icon-color')[0].classList.remove('error-icon');
+        document.getElementsByClassName('icon-color')[1].classList.remove('error-icon');
     }
- }
+    return true;
+}
 
- 
- loginButton.addEventListener("click", loginVal);
+function passwordVal(password) {
+    if (password.value.length < 3) {
+        passwordError.textContent += "Enter a valid password";
+        document.getElementsByClassName('password-container')[0].classList.add('error-input');
+        document.getElementsByClassName('icon-color')[2].classList.add('error-icon');   
+        password.style.color = '#E07979'; 
+    } else {
+        password.innerHTML = ""
+        document.getElementsByClassName('password-container')[0].classList.remove('error-input');
+        document.getElementsByClassName('icon-color')[2].classList.remove('error-icon');
+    }
+    return true;
+}
+
+loginButton.addEventListener("click", () => {
+    emailVal(userName);
+    passwordVal(password); 
+});
+
+
 
 // focus + active for email input //
  userName.addEventListener('keydown', () => {
@@ -69,6 +97,7 @@ password.addEventListener('mousedown', () => {
 
 password.addEventListener('focus', () => {
     document.getElementsByClassName('password-container')[0].classList.add('input-focus');
+    document.getElementsByClassName('icon-color')[2].classList.add('activated');
 });
 password.addEventListener('blur', () => {
     document.getElementsByClassName('password-container')[0].classList.remove('input-focus');
@@ -91,8 +120,7 @@ password.addEventListener("focus", () => {
     document.getElementsByName('password-input')[0].classList.add("input-active");
 })*/
 
-const loginRequest = async function() {
-    
+const loginRequest = async function() { 
     const response = await fetch('http://localhost:3000/login/Login', {
     method: 'POST', 
     headers: {
@@ -119,4 +147,13 @@ const loginRequest = async function() {
 
 };
 
-loginButton.addEventListener('click', loginRequest);
+function loginVal () {
+    if (emailVal(userName) && passwordVal(password)) {
+        loginButton.addEventListener('click', loginRequest);
+    } else {
+
+    }
+}
+
+
+
