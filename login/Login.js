@@ -28,12 +28,13 @@ function emailVal(userName) {
     if (!result) {
         emailError.textContent += "Enter a valid email";
         console.log(emailError)
+        new ErrorColor(1, 'user-container', 'icon-color', userName, 'error-input', 'error-icon');
        //document.querySelector('.user-container').insertAdjacentHTML('afterend', 'enter a valid');
       
-        document.getElementsByClassName('user-container')[0].classList.add('error-input');
+        /*document.getElementsByClassName('user-container')[0].classList.add('error-input');
         document.getElementsByClassName('icon-color')[0].classList.add('error-icon');
         document.getElementsByClassName('icon-color')[1].classList.add('error-icon');
-        userName.style.color = '#E07979';
+        userName.style.color = '#E07979';*/
     } else {
         emailError.innerHTML = ""
         document.getElementsByClassName('user-container')[0].classList.remove('error-input');
@@ -48,7 +49,7 @@ function passwordVal(password) {
         passwordError.textContent += "Enter a valid password";
         document.getElementsByClassName('password-container')[0].classList.add('error-input');
         document.getElementsByClassName('icon-color')[2].classList.add('error-icon');   
-        password.style.color = '#E07979'; 
+        
     } else {
         password.innerHTML = ""
         document.getElementsByClassName('password-container')[0].classList.remove('error-input');
@@ -139,4 +140,21 @@ function loginVal () {
 }
 
 
+let ErrorColor = class {
+    constructor(n, element1, element2, element3, style1, style2) {
+        this.n = n;
+        this.element1 = element1;
+        this.element2 = element2;
+        this.element3 = element3;
+        this.style1 = style1;
+        this.style2 = style2;
 
+        document.getElementsByClassName(element1)[0].classList.add(style1);
+
+            for (let i = 0; i <= n; i++) {
+                document.getElementsByClassName(element2)[i].classList.add(style2);
+            }
+        
+        element3.style.color = '#E07979';
+    }
+}
