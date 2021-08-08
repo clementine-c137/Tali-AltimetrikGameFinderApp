@@ -105,21 +105,6 @@ password.addEventListener('blur', () => {
 });
 
 
-
-
-//const targetPassword = document.querySelector('input[type="password"]');//
-
-/*password.addEventListener("focus", () => {
-    document.getElementsByClassName('icon-color')[2].classList.add("focused");
-});
-password.addEventListener("active", () => {
-    document.getElementsByClassName('icon-color')[2].classList.add("focused");
-});
-
-password.addEventListener("focus", () => {
-    document.getElementsByName('password-input')[0].classList.add("input-active");
-})*/
-
 const loginRequest = async function() { 
     const response = await fetch('http://localhost:3000/login/Login', {
     method: 'POST', 
@@ -132,7 +117,7 @@ const loginRequest = async function() {
     const responseJson = await  response.json();
     if (response.status === 200) {
         document.cookie = 'authToken' + responseJson.accessToken;
-        alert ('YAS');
+        window.location = 'main.html';
     } else if (response.status === 400) {
         
         console.log(response);
@@ -150,9 +135,7 @@ const loginRequest = async function() {
 function loginVal () {
     if (emailVal(userName) && passwordVal(password)) {
         loginButton.addEventListener('click', loginRequest);
-    } else {
-
-    }
+    } 
 }
 
 
