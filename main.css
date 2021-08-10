@@ -7,13 +7,17 @@
 
 html {
     height: 100%;
+    width: 100%;
 }
 body {
     background-color: #141414;
     min-height: 100%;
+    width: 100%;
+  
 }
 
 header {
+    position: fixed;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -122,12 +126,14 @@ header {
 }
 
 .mainview-container {
+    padding-top: 120px;
     display: flex;
     height: 100%;
     width: 100%;
 }
 
 .side-menu {
+    position: fixed;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -136,6 +142,7 @@ header {
 
 .home {
     margin-top:33px;
+    
     margin-left: 39px;
     font-style: normal;
     font-weight: 800;
@@ -186,6 +193,7 @@ header {
 
 .sub-menu {
     display: flex;
+    width: 263px;
     align-items: center;
     margin-left: 40px;
     margin-bottom: 11px;
@@ -206,6 +214,8 @@ header {
 
 .main-container {
     height: 100%;
+    width: 100%;
+    padding-left: 263px;
 }
 
 .main-title {
@@ -227,10 +237,12 @@ header {
 
 .cards-container {
     height: 100%;
+    width: 100%;
+    margin-top: 30px;
 }
 .games-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 370px);
     grid-auto-rows: 314px;
     gap: 24px;
 }
@@ -241,3 +253,6 @@ header {
     border-radius: 10px;
     border: 2px solid #FFFFFF;
 }
+ul {
+    list-style-type: none;
+  }

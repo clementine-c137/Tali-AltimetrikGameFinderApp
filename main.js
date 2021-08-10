@@ -1,7 +1,6 @@
-window.onload = (event) => {
+window.onload = () => {
     console.log('page is fully loaded');
-    let ul = document.querySelector('.games-list');
-    ul.innerHTML = "";
+
   };
 const urlKey = "https://api.rawg.io/api/games?key=c171203ffd95417e994a2949e49ca0f8";
 
@@ -52,13 +51,14 @@ const loadRawg = async function() {
     }).then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        //data = JSON.parse(data.results);
-        
-        Object.entries(data).forEach( li => {
-          
+        //data = JSON.parse(data);
+        let ul = document.querySelector('.games-list');
+        ul.innerHTML = "";
+       // Object.entries(data).forEach( li => {
+        data.results.forEach( li => {
             li = document.createElement('li');
-            li.className = cardDisplay;
-           ul.appendchild(li);
+           li.classList.add('card-display') ;
+           ul.appendChild(li);
 
        });
    
