@@ -35,14 +35,16 @@ function emailVal(userName) {
         document.getElementsByClassName('icon-color')[0].classList.add('error-icon');
         document.getElementsByClassName('icon-color')[1].classList.add('error-icon');
         userName.style.color = '#E07979';
+        return false;
     } else {
         
         emailError.innerHTML = ""
         document.getElementsByClassName('user-container')[0].classList.remove('error-input');
         document.getElementsByClassName('icon-color')[0].classList.remove('error-icon');
         document.getElementsByClassName('icon-color')[1].classList.remove('error-icon');
+        return true;
     }
-    return true;
+
 }
 
 function passwordVal(password) {
@@ -51,17 +53,25 @@ function passwordVal(password) {
         document.getElementsByClassName('password-container')[0].classList.add('error-input');
         document.getElementsByClassName('icon-color')[2].classList.add('error-icon');   
         password.style.color = '#E07979';
+        console.log("pass");
+        return false;
     } else {
         passwordError.innerHTML = ""
         document.getElementsByClassName('password-container')[0].classList.remove('error-input');
         document.getElementsByClassName('icon-color')[2].classList.remove('error-icon');
+        return true;
     }
-    return true;
+
 }
 
 loginButton.addEventListener("click", () => {
-    emailVal(userName);
-    passwordVal(password); 
+    let eval = emailVal(userName);
+    let pval = passwordVal(password);
+    if (eval && pval) {
+       loginRequest();
+    } else {
+        console.log(error);
+    }
 });
 
 
@@ -117,21 +127,23 @@ password.addEventListener('blur', () => {
 
 
 const loginRequest = async function() { 
-    const response = await fetch('http://localhost:3000/login/Login', {
+    const response = await fetch("http://localhost:3000/login/Login", {
     method: 'POST', 
     headers: {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email: userName.value,
         password: password.value}),
-    })
+    });
     const responseJson = await  response.json();
     if (response.status === 200) {
         document.cookie = 'authToken' + responseJson.accessToken;
+        console.log('ok');
         window.location = 'main.html';
     } else if (response.status === 400) {
         
         console.log(response);
+        emailError.textContent += "Enter a valid email";
         document.getElementsByClassName('user-container')[0].classList.add('error-input');
         document.getElementsByClassName('icon-color')[0].classList.add('error-icon');
         document.getElementsByClassName('icon-color')[1].classList.add('error-icon');
@@ -152,11 +164,12 @@ const loginRequest = async function() {
 
 };
 
-function loginVal () {
+/*function loginVal () {
     if (emailVal(userName) && passwordVal(password)) {
         loginButton.addEventListener('click', loginRequest);
     } 
-}
+}*/
+//loginButton.addEventListener('click', loginRequest);
 
 
 let ErrorColor = class {

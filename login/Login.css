@@ -250,6 +250,14 @@ input[type="checkbox"]:focus {
     color: #FFFFFF;
 }
 
+.login-button:hover {
+   background: #7CD235; 
+}
+ 
+.login-button:active {
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
+
 
 .register {
     font-style: normal;
