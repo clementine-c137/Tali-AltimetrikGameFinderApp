@@ -28,14 +28,15 @@ function emailVal(userName) {
     if (!result) {
         emailError.textContent += "Enter a valid email";
         console.log(emailError)
-        new ErrorColor(1, 'user-container', 'icon-color', userName, 'error-input', 'error-icon');
+        //new ErrorColor(1, 'user-container', 'icon-color', userName, 'error-input', 'error-icon');
        //document.querySelector('.user-container').insertAdjacentHTML('afterend', 'enter a valid');
       
-        /*document.getElementsByClassName('user-container')[0].classList.add('error-input');
+        document.getElementsByClassName('user-container')[0].classList.add('error-input');
         document.getElementsByClassName('icon-color')[0].classList.add('error-icon');
         document.getElementsByClassName('icon-color')[1].classList.add('error-icon');
-        userName.style.color = '#E07979';*/
+        userName.style.color = '#E07979';
     } else {
+        
         emailError.innerHTML = ""
         document.getElementsByClassName('user-container')[0].classList.remove('error-input');
         document.getElementsByClassName('icon-color')[0].classList.remove('error-icon');
@@ -49,9 +50,9 @@ function passwordVal(password) {
         passwordError.textContent += "Enter a valid password";
         document.getElementsByClassName('password-container')[0].classList.add('error-input');
         document.getElementsByClassName('icon-color')[2].classList.add('error-icon');   
-        
+        password.style.color = '#E07979';
     } else {
-        password.innerHTML = ""
+        passwordError.innerHTML = ""
         document.getElementsByClassName('password-container')[0].classList.remove('error-input');
         document.getElementsByClassName('icon-color')[2].classList.remove('error-icon');
     }
@@ -69,10 +70,15 @@ loginButton.addEventListener("click", () => {
  userName.addEventListener('keydown', () => {
     document.getElementsByClassName('icon-color')[0].classList.add('activated');
     document.getElementsByClassName('icon-color')[1].classList.add('activated');
+    userName.style.color = '#FFFFFF';
 });
 userName.addEventListener('mousedown', () => {
     document.getElementsByClassName('icon-color')[0].classList.add('activated');
     document.getElementsByClassName('icon-color')[1].classList.add('activated');
+    emailError.innerHTML = ""
+    document.getElementsByClassName('user-container')[0].classList.remove('error-input');
+    document.getElementsByClassName('icon-color')[0].classList.remove('error-icon');
+    document.getElementsByClassName('icon-color')[1].classList.remove('error-icon');
 });
 
 
@@ -90,9 +96,13 @@ userName.addEventListener('blur', () => {
 //focus + active for password input//
  password.addEventListener('keydown', () => {
     document.getElementsByClassName('icon-color')[2].classList.add('activated');
+    password.style.color = '#FFFFFF';
 });
 password.addEventListener('mousedown', () => {
     document.getElementsByClassName('icon-color')[2].classList.add('activated');
+    passwordError.innerHTML = ""
+        document.getElementsByClassName('password-container')[0].classList.remove('error-input');
+        document.getElementsByClassName('icon-color')[2].classList.remove('error-icon');
 });
 
 
@@ -122,6 +132,15 @@ const loginRequest = async function() {
     } else if (response.status === 400) {
         
         console.log(response);
+        document.getElementsByClassName('user-container')[0].classList.add('error-input');
+        document.getElementsByClassName('icon-color')[0].classList.add('error-icon');
+        document.getElementsByClassName('icon-color')[1].classList.add('error-icon');
+        userName.style.color = '#E07979';
+
+        passwordError.textContent += "Enter a valid password";
+        document.getElementsByClassName('password-container')[0].classList.add('error-input');
+        document.getElementsByClassName('icon-color')[2].classList.add('error-icon'); 
+        password.style.color = '#E07979';
     } 
     /*.then(response => response.json())
     .then(data => {
