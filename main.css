@@ -234,3 +234,10 @@ header {
     grid-auto-rows: 314px;
     gap: 24px;
 }
+
+.card-display {
+    height: 314px;
+    width: 363px;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+}
