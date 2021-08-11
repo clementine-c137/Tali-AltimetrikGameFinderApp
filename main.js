@@ -45,6 +45,22 @@ let cardDisplay = document.querySelector('.card-display')
 
 const loadRawg = async function() {
     console.log("pff");
+    let cardsContainer = document.querySelector('.cards-container');
+    let spinner = document.createElement('div');
+    //let source = document.createElement('source');
+    //let preload = document.createElement('preload');
+    
+    //preload.setAttribute('preload', 'none');
+    
+    
+    //spinner.muted = true;
+    //spinner = document.getElementsByClassName('games-list').innerHTML;
+    //spinner.appendChild(source);
+    cardsContainer.appendChild(spinner);
+    //spinner.setAttribute('source', './img/hamster.png');
+    spinner.classList.add('spinner');
+    //spinner.load();
+    //spinner.play();
     const response = await fetch(urlKey, {
         method: 'GET',
 
@@ -52,16 +68,38 @@ const loadRawg = async function() {
     .then(data => {
         console.log('Success:', data);
         //data = JSON.parse(data);
-        let ul = document.querySelector('.games-list');
+       
+       /* let ul = document.querySelector('.games-list');
         ul.innerHTML = "";
-       // Object.entries(data).forEach( li => {
-        data.results.forEach( li => {
-            li = document.createElement('li');
-           li.classList.add('card-display') ;
-           ul.appendChild(li);
 
+       // Object.entries(data).forEach( li => {
+        data.results.forEach( (li, i) => {
+            li = document.createElement('li');
+           ul.appendChild(li);
+           li.classList.add('card-display') ;
+
+           let backImg = document.createElement('img');
+           backImg.src = data.results[i].background_image;
+           li.appendChild(backImg);
+           backImg.classList.add('background-img');
+
+
+       });*/
+       let ul = document.querySelector('.games-list');
+       //let card = "";
+       data.results.forEach((card,i) => {
+           let arr = data.results[i]
+           card = `<li class="card-display">
+                <img src="${arr.background_image}" class="background-img">
+                <div class="card-info">
+                    <h2 class="game-title">${arr.name}<h2>
+                    <p class="date">Rlease date</p>
+                </div>
+             </li>`
+            ul.innerHTML += card;
+        
        });
-   
+
         }); 
       
         

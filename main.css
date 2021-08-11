@@ -138,6 +138,7 @@ header {
     flex-direction: column;
     height: 100%;
     width: 263px;
+    background-color: #141414;
 }
 
 .home {
@@ -235,10 +236,23 @@ header {
     color: #FFFFFF;
 }
 
+.spinner {
+    position: relative;
+    background-image: url(./img/hamster1.png);
+    background-size: cover;
+    border: 2px solid #FFFFFF;
+    border-radius: 15%;
+    height:650px;
+    width: 700px;
+    margin-left: 200px;
+    transform: translateX(100px);
+}
 .cards-container {
     height: 100%;
     width: 100%;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
 }
 .games-list {
     display: grid;
@@ -248,11 +262,61 @@ header {
 }
 
 .card-display {
+    display: flex;
+    flex-direction: column;
     height: 314px;
     width: 363px;
     border-radius: 10px;
     border: 2px solid #FFFFFF;
+    align-items: center;
 }
 ul {
     list-style-type: none;
+  }
+
+  .background-img {
+      height: 204px;
+      width: 362px;
+      border: none;
+      border-radius: 10px 10px 0px 0px;
+      
+  }
+
+  img {
+    border: 2px solid #FFFFFF;
+    border-radius: 15px;
+    height: 350px;
+    width: 350px;
+  }
+  .card-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      height: 109px;
+      width: 363px;
+      background-color: #303030;
+      border-radius: 0px 0px 10px 10px;
+  }
+
+  .game-title {
+    grid-area: 1/1/1/3;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 31px;
+    color: #FFFFFF;
+    margin-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .date {
+    grid-area: 2/1/2/2; 
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #939393;
+    margin-left: 20px;
   }
