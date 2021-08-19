@@ -1,61 +1,76 @@
 window.onload = () => {
     console.log('page is fully loaded');
-  };
-   let spinner = document.querySelector('.spinner');
+};
+const urlKey = "https://api.rawg.io/api/games?key=c171203ffd95417e994a2949e49ca0f8";
+//let searchBar = document.querySelector('.search-input');
+let searchRequest = document.querySelector('.search-button');
+let searchInput = document.querySelector('.search-input');
+let spinner = document.querySelector('.spinner');
   //Load api + spinner
-  async function loadRawg() {
-
-    const urlKey = "https://api.rawg.io/api/games?key=c171203ffd95417e994a2949e49ca0f8";
+  
+  async function loadRawg(urlKey) { 
     let response = await fetch(urlKey);
     let data = await response.json();
     //console.log(data);
     return data;
-  }
+  };
 
-    // Display cards
-    async function loadCards() {
-        let data = await loadRawg();
-        let ul = document.querySelector('.games-list');
-        ul.innerHTML = "";
-        //let cardsString = "";
-        data.results.map((arr,i) => {
-            arr = data.results[i];
-            console.log(arr);
-            ul.insertAdjacentHTML('beforeend', 
-            `<li class="card-display" onclick="()">
-                <img src="${arr.background_image}" class="background-img">
-                <div class="card-info">
-                    <h2 class="game-title">${arr.name}</h2>
+
+ // Display cards
+async function loadCards(urlKey) {
+    let data = await loadRawg(urlKey);
+    let ul = document.querySelector('.games-list');
+    ul.innerHTML = "";
+    //let cardsString = "";
+    data.results.map((arr,i) => {
+        arr = data.results[i];
+        console.log(arr);
+        ul.insertAdjacentHTML('beforeend', 
+        `<li class="card-display">
+            <img src="${arr.background_image}" class="background-img">
+            <div class="card-info">
+                <h2 class="game-title">${arr.name}</h2>
                     
-                    <div class="date-container">
-                        <h3 class="release-date">Release date</h3>
-                        <h3 class="rd-value">${released(arr)}<h3>
+                <div class="date-container">
+                    <h3 class="release-date">Release date</h3>
+                    <h3 class="rd-value">${released(arr)}<h3>
+                </div>
+                <div class="genres-container">
+                    <h3 class="genres">Genres</h3>
+                    <div class="values-container">
+                    ${insertGenre(arr)}
                     </div>
-                    <div class="genres-container">
-                        <h3 class="genres">Genres</h3>
-                        <div class="values-container">
-                        ${insertGenre(arr)}
-                        </div>
-                    </div>
-                    <div class="platforms-container">
+                </div>
+                <div class="platforms-container">
                     ${loadPlatforms(arr)}</div>
                     <h2 class="more-platforms"></h2>
-                    <h2 class="ranking">#${i+1}</h2>
-                    <button class="wish-list">
+                
+                <h2 class="ranking">#${i+1}</h2>
+                <button class="wish-list">
                     <img class="wl-icon" src="./img/wl.svg">
-                    </button>
-
+                </button>
                 </div>
+                
             </li>
             `)
 
-           
+        //openModal(arr);  
         });
         //ul.innerHTML = cardsString;
         spinner.style.display = "none"; 
+
      };
 
- loadCards(); 
+     loadCards(urlKey); 
+
+searchRequest.addEventListener('click', () =>{
+    if (searchInput != "") {
+        let link = urlKey + `&search=${searchInput.value}`;
+        console.log(link);
+        loadCards(link); 
+    }
+});
+
 
  function released(arr) { 
     let release = new Date(arr.released);
@@ -134,4 +149,5 @@ window.onload = () => {
             return card;
     }
 
-}
+};
+
