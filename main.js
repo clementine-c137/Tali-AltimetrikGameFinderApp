@@ -1,108 +1,137 @@
 window.onload = () => {
     console.log('page is fully loaded');
-
   };
-const urlKey = "https://api.rawg.io/api/games?key=c171203ffd95417e994a2949e49ca0f8";
+   let spinner = document.querySelector('.spinner');
+  //Load api + spinner
+  async function loadRawg() {
 
-/*const loadRawg = async function() {
-    console.log("pff");
-    const response = await fetch(urlKey, {
-        method: 'GET',
+    const urlKey = "https://api.rawg.io/api/games?key=c171203ffd95417e994a2949e49ca0f8";
+    let response = await fetch(urlKey);
+    let data = await response.json();
+    //console.log(data);
+    return data;
+  }
 
-    }).then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        const catalog =  JSON.parse(data);
-        catalog.forEach(element => {
-            let ul = document.getElementsByClassName('games-list');
-            let li = document.getElementsByClassName('card-display');
-            ul.appendchild(li);
-        });
-    
-    });
-}*/
-
-/*function loadRawg () {
-     fetch(urlKey, {
-        method: 'GET',
-
-    }).then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        const catalog =  JSON.parse(data, Array);
-        let ul = document.getElementsByClassName('games-list')[0];
-        catalog.forEach(ul => {
-            
-            let li = document.createElement('li');
-            li.className = 'card-display';
-            ul.appendchild(li);
-        });
-    
-    });
-}*/
-let cardDisplay = document.querySelector('.card-display')
-
-
-const loadRawg = async function() {
-    console.log("pff");
-    let cardsContainer = document.querySelector('.cards-container');
-    let spinner = document.createElement('div');
-    //let source = document.createElement('source');
-    //let preload = document.createElement('preload');
-    
-    //preload.setAttribute('preload', 'none');
-    
-    
-    //spinner.muted = true;
-    //spinner = document.getElementsByClassName('games-list').innerHTML;
-    //spinner.appendChild(source);
-    cardsContainer.appendChild(spinner);
-    //spinner.setAttribute('source', './img/hamster.png');
-    spinner.classList.add('spinner');
-    //spinner.load();
-    //spinner.play();
-    const response = await fetch(urlKey, {
-        method: 'GET',
-
-    }).then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        //data = JSON.parse(data);
-       
-       /* let ul = document.querySelector('.games-list');
+    // Display cards
+    async function loadCards() {
+        let data = await loadRawg();
+        let ul = document.querySelector('.games-list');
         ul.innerHTML = "";
-
-       // Object.entries(data).forEach( li => {
-        data.results.forEach( (li, i) => {
-            li = document.createElement('li');
-           ul.appendChild(li);
-           li.classList.add('card-display') ;
-
-           let backImg = document.createElement('img');
-           backImg.src = data.results[i].background_image;
-           li.appendChild(backImg);
-           backImg.classList.add('background-img');
-
-
-       });*/
-       let ul = document.querySelector('.games-list');
-       //let card = "";
-       data.results.forEach((card,i) => {
-           let arr = data.results[i]
-           card = `<li class="card-display">
+        //let cardsString = "";
+        data.results.map((arr,i) => {
+            arr = data.results[i];
+            console.log(arr);
+            ul.insertAdjacentHTML('beforeend', 
+            `<li class="card-display" onclick="()">
                 <img src="${arr.background_image}" class="background-img">
                 <div class="card-info">
-                    <h2 class="game-title">${arr.name}<h2>
-                    <p class="date">Rlease date</p>
-                </div>
-             </li>`
-            ul.innerHTML += card;
-        
-       });
+                    <h2 class="game-title">${arr.name}</h2>
+                    
+                    <div class="date-container">
+                        <h3 class="release-date">Release date</h3>
+                        <h3 class="rd-value">${released(arr)}<h3>
+                    </div>
+                    <div class="genres-container">
+                        <h3 class="genres">Genres</h3>
+                        <div class="values-container">
+                        ${insertGenre(arr)}
+                        </div>
+                    </div>
+                    <div class="platforms-container">
+                    ${loadPlatforms(arr)}</div>
+                    <h2 class="more-platforms"></h2>
+                    <h2 class="ranking">#${i+1}</h2>
+                    <button class="wish-list">
+                    <img class="wl-icon" src="./img/wl.svg">
+                    </button>
 
-        }); 
-      
+                </div>
+            </li>
+            `)
+
+           
+        });
+        //ul.innerHTML = cardsString;
+        spinner.style.display = "none"; 
+     };
+
+ loadCards(); 
+
+ function released(arr) { 
+    let release = new Date(arr.released);
+    release = release.toDateString().split(' ').slice(1).join(' ');
+    console.log(release);
+    return release;
+ }
+
+ function insertGenre(arr) {
+    let card = "";
+    console.log(arr.genres.length);
+    for (let j = 0; j < arr.genres.length; j++) {
+        console.log(j);
+        let genreValue = arr.genres[j];
+        console.log(genreValue.name);
         
-    
+        if (j < arr.genres.length - 1) { /*Hablamos de un problema que tuve en el loop del genero y 
+            Euge me mostro su codigo antes que hiciera esta condicion entonces ya me dio la idea*/
+            card += `<h3 class="genres-value">${genreValue.name}, &nbsp</h3>`;
+        } else {
+           card += `<h3 class="genres-value">${genreValue.name}</h3>`;
+        }  
+    };
+    return card; 
 }
-loadRawg();
+
+ function loadPlatforms(arr) {
+    let platforms = arr.parent_platforms; 
+
+    if (platforms) {
+        console.log("dl;hkdflkh");
+        let addIcon = (x) =>{
+            console.log("guaaat");
+            let icon = './img/' + x + '.svg';
+            console.log(icon);
+            card += `<img src="${icon}" class="platform-icon">`;
+            return card;
+        }
+
+        let card = ""; 
+        for (let k = 0; k < platforms.length; k++) {
+                
+                 
+                switch (platforms[k].platform.id) {
+                    case 2:
+                        addIcon('ps');
+                        break;
+                    case 3:
+                        addIcon('xbox');
+                        break;
+                    case 1:
+                        addIcon('pc');
+                        console.log("213233");
+                        break;
+                    case 4:
+                        addIcon('apple');
+                        break;
+                    case 5:
+                        addIcon('android');
+                        break;
+                    case 6:
+                        addIcon('apple');
+                        break;
+                    case 7:
+                        //addIcon('linux');
+                        break;
+                    case 8:
+                        addIcon('switch');
+                        break;
+                    default:
+                        console.log("dsd");
+                        break;
+                } 
+        }
+        
+            return card;
+    }
+
+}
