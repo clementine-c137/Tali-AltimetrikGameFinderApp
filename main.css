@@ -350,8 +350,8 @@ ul {
   }
   
   .background-img {
-      height: 100%;
-      width: 100%;
+      height: 204px;
+      width: 362px;
       border: none;
       border-radius: 10px 10px 0px 0px;
       cursor: pointer;
@@ -617,7 +617,36 @@ ul {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    line-height: 19px;
-    
+    line-height: 19px; 
     color: #FFFFFF;
+ }
+
+ .game-screenshot {
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     width: 500px;
+     justify-content: center;
+ }
+
+ .shots-display {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     grid-template-rows: 2fr 1fr 1fr;
+     gap: 15px;
+     height: 425px;
+     width: 384px;
+     justify-items: center;
+ }
+
+ .img1 {
+    grid-area: 1/1/1/span 2;
+    height: 217px;
+    width: 384px;
+ }
+
+ .img2, .img3,
+ .img4, .img5 {
+    height: 104px;
+    width: 184px;
  }

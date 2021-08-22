@@ -65,8 +65,9 @@ async function loadCards(urlKey) {
                 <button class="wish-list">
                     <img class="wl-icon" src="./img/wl.svg">
                 </button>
-            </div>    
                 
+            </div>    
+             <div class="game-description"></div>   
             </li>
             `)  
         });
@@ -174,6 +175,7 @@ searchRequest.addEventListener('click', () =>{
     li.forEach(element => {
         //element.classList.remove('card');
         element.classList.add('card--flex');
+        
     });
 
  };
@@ -208,13 +210,18 @@ function openModal(data) {
                     ${loadPlatforms(arr)}
                     </div>
                     <h2 class="game-title--modal">${arr.name}</h2>
-                    <div class="game-description">
-                   
-                    </div>
-                </div>  
+                    <div class="game-description"></div>
+                </div> 
+                <div class="game-screenshot">
+                    <button class="exit"></button>
+                    <ul class="screenshot-display">
+                       
+                    </ul>
+                </div> 
             </div>`
             );
             loadDescription(arr);
+            loadShots(arr);
         });
     });
 
@@ -227,11 +234,30 @@ async function loadDescription(arr) {
         let description =document.querySelectorAll('.game-description');
 
         description.forEach(element => {
-            element.insertAdjacentHTML('beforeend', `${dataId.description}`);
-            
+            element.insertAdjacentHTML('beforeend', `${dataId.description}`);    
         }); 
-        console.log(dataId.description);
+        console.log(dataId.description);      
+}
+
+function loadShots (arr) {
+    
+     console.log(arr.short_screenshots);   
+     let ul = document.querySelector('.screenshot-display') ;
         
+            ul.insertAdjacentHTML('beforeend',
+            `<li class="shots-display">
+                    ${insert(arr)}
+                </li>`) ; 
+             
+            function insert (arr) {
+                let card = "";
+                for (let j = 1; j<6; j++) {
+                    let img = arr.short_screenshots[j].image;
+                    card += `<img src="${img}" class="img${j}">`
+                };
+                return card;
+            };
+
 }
 
 
