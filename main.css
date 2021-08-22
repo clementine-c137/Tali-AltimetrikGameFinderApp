@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    font-family: "Open Sans", sans-serif;
+}
+
+html {
+    height: 100%;
+}
+body {
+    background-color: #141414;
+    min-height: 100%;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 120px;
+    width: 100%;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+    width: 198px;
+    margin-left: 39px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    align-self: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 38px;
+    letter-spacing: 1.74222px;
+    color: #FFFFFF;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    width: 362px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    justify-self: center;
+    align-self: center;
+    background: #F1F1F1;
+    border-radius: 20px;    
+}
+
+.loupe {
+    height: 16px;
+    width: 16px;
+    margin-left: 20px;
+    fill: #A6A6A6;
+}
+
+.search-input {
+    height: inherit;
+    width: 301px; /*361-61*/
+    margin-left: 25px;
+    border: none;
+    background-color: transparent;
+    outline: 0;
+}
+
+
+::placeholder {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #A6A6A6;
+}
+
+
+.profile {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 39px;
+}
+
+.logout {
+    padding-right: 11px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.logout-button {
+    margin-right: 33px;
+    background-color: transparent;
+    border: transparent;
+
+}
+
+.profile-photo {
+    height: 44px;
+    width: 46px;
+    border-radius: 50%;
+}
+
+.line {
+    height: 1px;
+    grid-area: 3/ 1/ 4/ 4;
+    border: none;
+    margin-left: 40px;
+    margin-right: 40px;
+    background: #FFFFFF;
+}
