@@ -11,6 +11,7 @@ let ul = document.querySelector('.games-list');
 let buttonGrid = document.querySelector('.grid-view-btn')
 let buttonFlex = document.querySelector('.flex-view-btn');
 let modalBg = document.querySelector('.modal-bg'); 
+let logout = document.querySelector('.logout-button');
 
 function load () {
     console.log('loaded');
@@ -25,7 +26,6 @@ function load () {
   async function loadRawg(urlKey) { 
     let response = await fetch(urlKey);
     let data = await response.json();
-    console.log(data);
     return data;
   };
 
@@ -33,7 +33,6 @@ function load () {
  // Display cards
 async function loadCards(urlKey) {
     let data = await loadRawg(urlKey);
-    console.log(data);
     ul.innerHTML = "";
     //let cardsString = "";
     data.results.map((arr,i) => {
@@ -65,15 +64,16 @@ async function loadCards(urlKey) {
                 <button class="wish-list">
                     <img class="wl-icon" src="./img/wl.svg">
                 </button>
-                
+                <div class="game-description" style="display:none">${loadDescription(arr)}</div>
             </div>    
-             <div class="game-description"></div>   
+               
             </li>
-            `)  
+            `);  
+            loadDescription(arr)
         });
+        
         openModal(data);  
         spinner.style.display = "none"; 
-        
      };
 
 
@@ -82,7 +82,6 @@ searchInput.addEventListener('keyup', (e) =>{
     
     if (searchInput != "" && e.keyCode === 13) {
         let link = urlKey + `&search=${searchInput.value}`;
-        console.log(link);
         loadCards(link); 
     }
 });
@@ -90,7 +89,6 @@ searchInput.addEventListener('keyup', (e) =>{
 searchRequest.addEventListener('click', () =>{
     if (searchInput != "") {
         let link = urlKey + `&search=${searchInput.value}`;
-        console.log(link);
         loadCards(link); 
     }
 });
@@ -157,7 +155,6 @@ searchRequest.addEventListener('click', () =>{
                         addIcon('switch');
                         break;
                     default:
-                        console.log("dsd");
                         break;
                 } 
         }
@@ -200,10 +197,7 @@ function openModal(data) {
     li.forEach((element, i) => {
         element.addEventListener('click', () => {
             modalBg.classList.add('bg-active');
-            //modal.insertAdjacentElement('beforeend',li[i]);
-            //li[i].classList.add('card--modal');
             arr = data.results[i];
-            //loadDescription(arr);
             modal.insertAdjacentHTML('beforeend',
             `<div class="modal-main" style="background-image: 
                 url('${arr.background_image}');">
@@ -240,7 +234,6 @@ function openModal(data) {
 
 async function loadDescription(arr) {
         let id =arr.id;
-        console.log(arr);
         let dataId = await loadRawg(`https://api.rawg.io/api/games/${id}?key=c171203ffd95417e994a2949e49ca0f8`)
         let description =document.querySelectorAll('.game-description');
 
@@ -251,8 +244,7 @@ async function loadDescription(arr) {
 }
 
 function loadShots (arr) {
-    
-     console.log(arr.short_screenshots);   
+      
      let ul = document.querySelector('.screenshot-display') ;
         
             ul.insertAdjacentHTML('beforeend',
@@ -291,6 +283,8 @@ function closeModal (modal) {
 }
 
     
-
+logout.addEventListener('click', () => {
+    window.location = 'Login.html';
+})
 
 

@@ -6,6 +6,7 @@ let emailError = document.querySelector('.error-message-email');
 let passwordError = document.querySelector('.error-message-psw');
 
 
+
 const showPassword = function() {
     if (password.type === "password") {
         password.type = "text";
@@ -154,22 +155,9 @@ const loginRequest = async function() {
         document.getElementsByClassName('icon-color')[2].classList.add('error-icon'); 
         password.style.color = '#E07979';
     } 
-    /*.then(response => response.json())
-    .then(data => {
-    console.log('Success:', data);
-    })
-    .catch((error) => {
-    console.error('Error:', error);
-    }); */
 
 };
 
-/*function loginVal () {
-    if (emailVal(userName) && passwordVal(password)) {
-        loginButton.addEventListener('click', loginRequest);
-    } 
-}*/
-//loginButton.addEventListener('click', loginRequest);
 
 
 let ErrorColor = class {

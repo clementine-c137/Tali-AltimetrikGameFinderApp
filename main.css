@@ -356,6 +356,10 @@ ul {
       cursor: pointer;
   }
 
+  .card--flex .background-img {
+      height: 315px;
+      width: 697px;
+  }
 
   .card-info {
       display: grid;
@@ -377,6 +381,10 @@ ul {
       width: 100%;
       background-color: #303030;
       border-radius: 0px 0px 10px 10px;
+  }
+
+  .card--flex .game-description  {
+      display: block;
   }
 
   .game-title {
