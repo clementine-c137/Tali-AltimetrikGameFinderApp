@@ -12,8 +12,7 @@ html {
 body {
     background-color: #141414;
     min-height: 100%;
-    width: 100%;
-  
+    width: 100%; 
 }
 
 header {
@@ -553,10 +552,11 @@ ul {
   .bg-active {
     visibility: visible;
     opacity: 1;
+    z-index: 3;
   }
 
   .modal {
-      z-index: 3;
+      z-index: 4;
       height: 794px;
       width: 1082px;
       opacity: 1;
@@ -624,9 +624,11 @@ ul {
  .game-screenshot {
      display: flex;
      flex-direction: column;
+     gap: 153px;
      height: 100%;
      width: 500px;
      justify-content: center;
+     justify-content: space-between;
  }
 
  .shots-display {
@@ -637,6 +639,7 @@ ul {
      height: 425px;
      width: 384px;
      justify-items: center;
+     margin-bottom: 145px;
  }
 
  .img1 {
@@ -650,3 +653,43 @@ ul {
     height: 104px;
     width: 184px;
  }
+
+ .exit {
+     background-image: url('./img/exit.svg');
+     height: 16px;
+     width: 16px;
+     margin: 20px;
+     border: none;
+     background-size: contain;
+    align-self: flex-end;
+    justify-self: flex-start;
+    background-color: transparent;
+    
+ }
+
+.general-info--modal {
+    display: flex;
+    gap: 15px;
+    height: 30px;
+    width: 390px;
+    margin-top: 44px;
+}
+
+#rank--modal {
+    color: #2BB34F !important;
+}
+
+.general-info--modal > h3 {
+    height: 22px;
+    width: fit-content;
+    font-style: normal;
+    font-weight: normal;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: right;
+    color: #303030;
+    background:#FFFFFF;
+}
+

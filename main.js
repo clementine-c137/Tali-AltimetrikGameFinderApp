@@ -73,6 +73,7 @@ async function loadCards(urlKey) {
         });
         openModal(data);  
         spinner.style.display = "none"; 
+        
      };
 
 
@@ -195,6 +196,7 @@ searchRequest.addEventListener('click', () =>{
 function openModal(data) {
     let li = document.querySelectorAll('.card');
     let modal = document.querySelector('.modal');
+    
     li.forEach((element, i) => {
         element.addEventListener('click', () => {
             modalBg.classList.add('bg-active');
@@ -210,6 +212,14 @@ function openModal(data) {
                     ${loadPlatforms(arr)}
                     </div>
                     <h2 class="game-title--modal">${arr.name}</h2>
+                    <div class="general-info--modal">
+                        <h3 class="rd--modal">${released(arr)}</h3>
+                        <h3><span id="rank--modal">#${i+1}</span> TOP GAMES</h3>
+                    </div>
+                    <div class"buy-me">
+                        <img src="./img/buy.svg">
+                        <img src="./img/wl-modal.svg">
+                    </div>
                     <div class="game-description"></div>
                 </div> 
                 <div class="game-screenshot">
@@ -222,6 +232,7 @@ function openModal(data) {
             );
             loadDescription(arr);
             loadShots(arr);
+            closeModal (modal);
         });
     });
 
@@ -253,14 +264,31 @@ function loadShots (arr) {
                 let card = "";
                 for (let j = 1; j<6; j++) {
                     let img = arr.short_screenshots[j].image;
-                    card += `<img src="${img}" class="img${j}">`
+                    if (img) {  
+                        card += `<img src="${img}" class="img${j}">`
+                    } else {
+                        card += `<p class="no-description">Sorry, no description was found :(</p>`
+                    };
                 };
                 return card;
             };
 
 }
 
-
+function closeModal (modal) {
+    let li = document.querySelectorAll('.card');
+    li.forEach((exit) => {
+        exit = document.querySelector('.exit');
+        exit.addEventListener('click', () => {
+            modal.innerHTML = "";
+            modalBg.classList.remove('bg-active');
+        });
+        modalBg.addEventListener('click', () => {
+            modal.innerHTML = "";
+            modalBg.classList.remove('bg-active');
+        });
+    });
+}
 
     
 
