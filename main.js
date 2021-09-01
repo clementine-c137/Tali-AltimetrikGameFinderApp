@@ -64,16 +64,17 @@ async function loadCards(urlKey) {
                 <button class="wish-list">
                     <img class="wl-icon" src="./img/wl.svg">
                 </button>
-                <div class="game-description" style="display:none">${loadDescription(arr)}</div>
+                <div class="game-description" id="id${arr.id}" style="display:none"></div>
             </div>    
                
             </li>
-            `);  
-            loadDescription(arr)
+            `);
+            loadDescription(arr);
         });
         
         openModal(data);  
         spinner.style.display = "none"; 
+        
      };
 
 
@@ -214,7 +215,7 @@ function openModal(data) {
                         <img src="./img/buy.svg">
                         <img src="./img/wl-modal.svg">
                     </div>
-                    <div class="game-description"></div>
+                    <div class="game-description" id="id${arr.id}"></div>
                 </div> 
                 <div class="game-screenshot">
                     <button class="exit"></button>
@@ -235,7 +236,7 @@ function openModal(data) {
 async function loadDescription(arr) {
         let id =arr.id;
         let dataId = await loadRawg(`https://api.rawg.io/api/games/${id}?key=c171203ffd95417e994a2949e49ca0f8`)
-        let description =document.querySelectorAll('.game-description');
+        let description =document.querySelectorAll(`#id${id}`);
 
         description.forEach(element => {
             element.insertAdjacentHTML('beforeend', `${dataId.description}`);    
