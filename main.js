@@ -46,11 +46,11 @@ async function loadCards(urlKey) {
             <div class="card-info">
                 <h2 class="game-title">${arr.name}</h2>
                     
-                <div class="date-container" id="card-info">
+                <div class="date-container" id="api-info">
                     <h3 class="release-date">Release date</h3>
                     <h3 class="rd-value">${released(arr)}<h3>
                 </div>
-                <div class="genres-container" id="card-info">
+                <div class="genres-container" id="api-info">
                     <h3 class="genres">Genres</h3>
                     <div class="values-container">
                     ${insertGenre(arr)}
@@ -64,7 +64,7 @@ async function loadCards(urlKey) {
                 <button class="wish-list">
                     <img class="wl-icon" src="./img/wl.svg">
                 </button>
-                <div class="game-description" id="id${arr.id}" style="display:none"></div>
+                <div class="game-description" id="id${arr.id}" hidden></div>
             </div>    
                
             </li>
@@ -165,30 +165,30 @@ searchRequest.addEventListener('click', () =>{
 
 };
 
-
+// display of pne column or three
 
    function loadFlex() { 
+    buttonFlex.style.background = "url(./img/flex-enabled.svg)";
     ul.classList.remove('games-list');
     ul.classList.add('gl-flex');
     let li = document.querySelectorAll('.card');
     li.forEach(element => {
         //element.classList.remove('card');
-        element.classList.add('card--flex');
-        
+        element.classList.add('card--flex'); 
     });
-
+    buttonGrid.style.background = "url(./img/grid-disabled.svg)";
  };
 
 
  function loadGrid() { 
+    buttonGrid.style.background = "url(./img/grid-enabled.svg)";
     ul.classList.remove('gl-flex');
     ul.classList.add('games-list');
     let li = document.querySelectorAll('.card--flex');
     li.forEach(element => {
         element.classList.remove('card--flex');
-        //element.classList.add('card');
     });
-
+    buttonFlex.style.background = "url(./img/flex-disabled.svg)";
  };
 
 function openModal(data) {
@@ -233,6 +233,21 @@ function openModal(data) {
 
 };
 
+function closeModal (modal) {
+    let li = document.querySelectorAll('.card');
+    li.forEach((exit) => {
+        exit = document.querySelector('.exit');
+        exit.addEventListener('click', () => {
+            modal.innerHTML = "";
+            modalBg.classList.remove('bg-active');
+        });
+        modalBg.addEventListener('click', () => {
+            modal.innerHTML = "";
+            modalBg.classList.remove('bg-active');
+        });
+    });
+}
+
 async function loadDescription(arr) {
         let id =arr.id;
         let dataId = await loadRawg(`https://api.rawg.io/api/games/${id}?key=c171203ffd95417e994a2949e49ca0f8`)
@@ -266,21 +281,6 @@ function loadShots (arr) {
                 return card;
             };
 
-}
-
-function closeModal (modal) {
-    let li = document.querySelectorAll('.card');
-    li.forEach((exit) => {
-        exit = document.querySelector('.exit');
-        exit.addEventListener('click', () => {
-            modal.innerHTML = "";
-            modalBg.classList.remove('bg-active');
-        });
-        modalBg.addEventListener('click', () => {
-            modal.innerHTML = "";
-            modalBg.classList.remove('bg-active');
-        });
-    });
 }
 
     

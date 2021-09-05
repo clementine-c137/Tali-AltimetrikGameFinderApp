@@ -266,7 +266,7 @@ header {
 }
 
 .grid-view-btn {
-    background: url(./img/grid-pressed.svg);
+    background: url(./img/grid-enabled.svg);
     background-repeat: no-repeat;
     height: 40px;
     width: 40px;
@@ -274,8 +274,15 @@ header {
     border: transparent;
 }
 
+.grid-view-btn:hover {
+    background: url(./img/grid-hover.svg) !important;
+}
+
+.flex-view-btn:hover {
+    background: url(./img/flex-hover.svg) !important;
+}
 .flex-view-btn {
-    background: url(./img/flex-disabeled.svg);
+    background: url(./img/flex-disabled.svg);
     background-repeat: no-repeat;
     height: 40px;
     width: 40px;
@@ -357,7 +364,7 @@ ul {
   }
 
   .card--flex .background-img {
-      height: 315px;
+      height: 350px;
       width: 697px;
   }
 
@@ -374,7 +381,7 @@ ul {
 
   .card--flex .card-info {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(4, 1fr);
       padding-top: 8px;
       height: calc(35%);
@@ -383,9 +390,6 @@ ul {
       border-radius: 0px 0px 10px 10px;
   }
 
-  .card--flex .game-description  {
-      display: block;
-  }
 
   .game-title {
     grid-area: 1/1/1/span 1 ;
@@ -438,9 +442,15 @@ ul {
   .card--flex .genres-container, 
   .card--flex .date-container {
     display: flex;
-    grid-row-start: 2;
-    grid-row-end: 2;
+grid-area: 2/1/2/3;
     justify-content: space-between;
+    width: 200px;
+  }
+
+  .card--flex .game-description {
+    display: flex;
+    grid-area: 3/1/5/3;
+    flex-direction: column;
   }
 
   .genres {
@@ -451,6 +461,7 @@ ul {
     color: #939393;
     margin-left: 20px;
   }
+
 
   .genres-value {
     font-style: normal;
@@ -486,19 +497,13 @@ ul {
      width: 115px;
   }
 
+  
   .platform-icon {
      flex: 1 0 33%;
       height: 16px;
       width: 17px;
       margin-bottom: 15px;
       max-width: 16px;
-  }
-  object {
-    width: 16px;
-    height: 16px;  
-    fill: #FFFFFF !important; 
-    height: 15px;
-    
   }
 
   svg {
