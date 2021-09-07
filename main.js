@@ -50,12 +50,14 @@ async function loadCards(urlKey) {
                     <h3 class="release-date">Release date</h3>
                     <h3 class="rd-value">${released(arr)}<h3>
                 </div>
+                <hr class="dates-line">
                 <div class="genres-container" id="api-info">
                     <h3 class="genres">Genres</h3>
                     <div class="values-container">
                     ${insertGenre(arr)}
                     </div>
                 </div>
+                <hr class="genres-line">
                 <div class="platforms-container">
                     ${loadPlatforms(arr)}
                 </div>
@@ -202,27 +204,29 @@ function openModal(data) {
             modal.insertAdjacentHTML('beforeend',
             `<div class="modal-main" style="background-image: 
                 url('${arr.background_image}');">
-                <div class="game-info">
-                    <div class="platforms-container--modal">
-                    ${loadPlatforms(arr)}
-                    </div>
-                    <h2 class="game-title--modal">${arr.name}</h2>
-                    <div class="general-info--modal">
-                        <h3 class="rd--modal">${released(arr)}</h3>
-                        <h3><span id="rank--modal">#${i+1}</span> TOP GAMES</h3>
-                    </div>
-                    <div class"buy-me">
-                        <img src="./img/buy.svg">
-                        <img src="./img/wl-modal.svg">
-                    </div>
-                    <div class="game-description" id="id${arr.id}"></div>
-                </div> 
-                <div class="game-screenshot">
-                    <button class="exit"></button>
-                    <ul class="screenshot-display">
+                <div class="gradient">
+                    <div class="game-info">
+                        <div class="platforms-container--modal">
+                        ${loadPlatforms(arr)}
+                        </div>
+                        <h2 class="game-title--modal">${arr.name}</h2>
+                        <div class="general-info--modal">
+                            <h3 class="rd--modal">${released(arr)}</h3>
+                            <h3><span id="rank--modal">#${i+1}</span> TOP GAMES</h3>
+                        </div>
+                        <div class"buy-me">
+                            <img src="./img/buy.svg">
+                            <img src="./img/wl-modal.svg">
+                        </div>
+                        <div class="game-description" id="id${arr.id}"></div>
+                    </div> 
+                    <div class="game-screenshot">
+                        <button class="exit"></button>
+                        <ul class="screenshot-display">
                        
-                    </ul>
-                </div> 
+                        </ul>
+                    </div> 
+                </div>
             </div>`
             );
             loadDescription(arr);
