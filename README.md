@@ -1,4 +1,4 @@
-# Tali-AltimetrikGameFinderApp
+# Tali-GameFinderApp
 Load server for login from the terminal:
 npx json-server-auth db.json
 
